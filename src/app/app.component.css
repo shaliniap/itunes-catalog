@@ -1,0 +1,14 @@
+ul {
+  align-content: center;
+}
+
+.heading{
+  font-size: 35px;
+}
+
+nav {
+  background-color: #3358ff;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+}

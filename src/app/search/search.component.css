@@ -1,0 +1,43 @@
+label{
+  padding-left: 0px;
+  text-align: left;
+  padding-right: 0px;
+}
+
+div.form-group{
+  width: 80%;
+}
+
+.selectpicker{
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+
+mat-selection-list.alist{
+  padding-top:0px;
+  text-align: left;
+}
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  height: 30px;
+}
+
+
+mat-grid-tile-header.header{
+  background-color: white;
+  color: black;
+  width: 80%;
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center !important;
+}
+
+.mat-raised-button {
+  min-width:100px;
+  min-height: 50px;
+  border-radius: 25px;
+}
+
+.example-full-width {
+  width: 50%;
+}

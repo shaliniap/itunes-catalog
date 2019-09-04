@@ -1,0 +1,139 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--The search page to select/add selection parameters-->
+
+<div>
+    <!--<form [formGroup]="searchForm" novalidate (ngSubmit)="onSubmit()">-->
+      <form [formGroup]="searchForm" novalidate>
+         <mat-grid-list cols="2" rowHeight="70px">
+               <mat-grid-tile style="align-items: center">
+                     <div class="form-group">
+                              <label class="col-md-4 control-label">Term</label>
+                               <div class="input-group">
+                                  <input matInput type="text" formControlName="term" name="term" placeholder="Term">
+                                  <mat-error *ngIf="searchForm.get('term').invalid">Please enter term.</mat-error>
+                               </div>
+                        </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                  <label class="col-md-4 control-label">Country</label>
+                      <mat-form-field class="example-full-width">
+                          <input type="text" placeholder="Select Country" matInput formControlName="country" [matAutocomplete]="auto">
+                          <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option value="US">US</mat-option>
+                            <mat-option value="IN">IN</mat-option>
+                            <mat-option value="UK">UK</mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">Limit</label>
+                      <div class="input-group">
+                         <input matInput type="number" min="1" max="200" formControlName="limit" name="limit" placeholder="Enter value between 1 and 200">
+                         <mat-error *ngIf="searchForm.get('limit').invalid">Please enter value between 1 and 200</mat-error>
+                      </div>
+               </div>
+
+               </mat-grid-tile>
+               <mat-grid-tile>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">Media</label>
+                      <div class="input-group">
+                         <!--<input id="addressLine1" name="addressLine1" placeholder="Room No." class="form-control" required="true" value="" type="text">-->
+                        <select class="selectpicker form-control form-control-lg" formControlName="media" (change)="onMediaSelect()">
+                         <option value="">Select Media</option>
+                         <option>movie</option>
+                         <option>podcast</option>
+                         <option>music</option>
+                         <option>musicVideo</option>
+                         <option>audiobook</option>
+                         <option>shortFilm</option>
+                         <option>tvShow</option>
+                         <option>software</option>
+                         <option>ebook</option>
+                         <option>all</option>
+                        </select>
+                      </div>
+                </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">Entity</label>
+                      <div class="input-group">
+                          <select class="selectpicker form-control form-control-lg" formControlName="entity" [attr.disabled]="true">
+                            <option value="">Select Entity</option>
+                            <option *ngFor="let en of ent" value={{en}}>
+                              {{en}}
+                            </option>
+                         </select>
+                      </div>
+                      </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                     <div class="form-group">
+                               <label class="col-md-4 control-label">Callback</label>
+                               <div class="input-group">
+                                   <select class="selectpicker form-control form-control-lg" formControlName="callback">
+                                     <option value="">Select callback</option>
+                                  </select>
+                               </div>
+                        </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                  <div class="form-group">
+                      <label class="col-md-4 control-label">Attribute</label>
+                     <div class="input-group">
+                       <select class="form-control form-control-lg" formControlName="attribute">
+                         <option value="">Select attribute</option>
+                      </select>
+                     </div>
+                </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                     <div class="form-group">
+                               <label class="col-md-4 control-label">Language</label>
+                               <div class="input-group">
+                                   <select class="selectpicker form-control form-control-lg" formControlName="lang">
+                                     <option value="">Select language</option>
+                                     <option value="en_us">English</option>
+                                     <option value="ja_jp">Japanese</option>
+                                  </select>
+                               </div>
+                        </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                     <div class="form-group">
+                               <label class="col-md-4 control-label">Version</label>
+                               <div class="input-group">
+                                   <select class="selectpicker form-control form-control-lg" formControlName="version">
+                                     <option value="2">Select version</option>
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                  </select>
+                               </div>
+                        </div>
+               </mat-grid-tile>
+               <mat-grid-tile>
+                     <div class="form-group">
+                               <label class="col-md-4 control-label">Explicit content</label>
+                               <div class="input-group">
+                                   <select class="selectpicker form-control form-control-lg" formControlName="explicit">
+                                     <option value="Yes">Yes</option>
+                                     <option value="No">No</option>
+                                  </select>
+                               </div>
+                        </div>
+               </mat-grid-tile>
+            </mat-grid-list>
+            <br/>
+
+
+            <div style="text-align:center">
+                  <button mat-raised-button color="primary" (click)="onSavePost()" style="margin-bottom: 10%">Search</button>
+             </div>
+        </form>
+    </div>

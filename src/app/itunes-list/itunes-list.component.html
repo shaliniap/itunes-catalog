@@ -1,0 +1,41 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!--This page diplays filtered iTunes list-->
+
+<h1></h1>
+<div class="result">
+<p><strong>No.Of iTunes: </strong><span>{{count}}</span></p>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="ARTWORK">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Artwork</th>
+            <td mat-cell *matCellDef="let element"> <img src="{{element.artworkUrl60}}" /> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="NAME">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell *matCellDef="let element"> {{element.artistName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="GENRE">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Genre</th>
+              <td mat-cell *matCellDef="let element"> {{element.primaryGenreName}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="LINK_TO_ITUNES">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Link to iTunes</th>
+            <td mat-cell *matCellDef="let element"><a href="{{element.previewUrl}}">{{element.previewUrl}}</a></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+</div>
